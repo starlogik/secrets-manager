@@ -1,32 +1,38 @@
 import { SecretsManager } from 'aws-sdk';
-import { Writeln } from 'writeln';
+import { Logger } from 'writeln';
 import fs from 'graceful-fs';
-import deasync from 'deasync';
+// import deasync from 'deasync';
 
 interface ISection {
 	[key: string]: string | ISection;
 }
 
-const logger = new Writeln('secrets-manager');
+const logger = new Logger('secrets-manager');
 const secretsManager = new SecretsManager({ region: 'eu-west-1' });
 const jsonRegex = /{".+":.+}/;
 
-export function decryptSync<T extends {}>(filePath: string, pattern?: RegExp): T {
-	let config: any;
+// export function decryptSync<T extends {}>(filePath: string, pattern?: RegExp): T {
+// 	let config: any;
+//
+// 	(async function () {
+// 		config = await decrypt<T>(filePath, pattern);
+// 	})();
+//
+// 	deasync.loopWhile(() => !config);
+//
+// 	return config as T;
+// }
 
-	(async function () {
-		config = await decrypt<T>(filePath, pattern);
-	})();
+export async function decrypt<T>(filePathOrObject: string | {}, pattern = /^secret:(.+)$/): Promise<T> {
+	let config: {};
 
-	deasync.loopWhile(() => !config);
-
-	return config as T;
-}
-
-export async function decrypt<T>(filePath: string, pattern = /^secret:(.+)$/): Promise<T> {
-	const json = await getFile(filePath);
-
-	const config = JSON.parse(json);
+	if (typeof(filePathOrObject) === 'string') {
+		const json = await getFile(filePathOrObject);
+		config = JSON.parse(json);
+	}
+	else {
+		config = filePathOrObject;
+	}
 
 	await walkAndDecrypt(config, pattern);
 
@@ -53,7 +59,7 @@ async function walkAndDecrypt(section: ISection, pattern: RegExp) {
 	}
 }
 
-async function decryptSecret(SecretId: string) {
+export async function decryptSecret(SecretId: string) {
 	try {
 		const { SecretString, SecretBinary } = await secretsManager.getSecretValue({ SecretId }).promise();
 

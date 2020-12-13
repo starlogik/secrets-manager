@@ -1,5 +1,4 @@
-const assert = require('assert');
-require('mocha');
+import assert from 'assert';
 
 describe('Test1', function() {
 	it('should ', function () {

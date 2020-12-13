@@ -1,28 +1,18 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "target": "esnext",
-    "allowJs": false,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "rootDir": "src",
-
     "declaration": true,
+    "declarationDir": "./lib",
+    "inlineSources": false,
+    "esModuleInterop": true,
     "module": "commonjs",
-    "isolatedModules": false,
-    "noEmit": false,
-    "lib": [
-      "es2015"
-    ],
-    "outDir": "./lib"
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "target": "esnext",
+    "watch": false
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "test", "lib"]
 }
