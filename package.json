@@ -1,6 +1,6 @@
 {
   "name": "secrets-manager",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "NodeJS config decryptor for AWS Secrets Manager",
   "author": "Ash Brener",
   "main": "./lib/index.js",
@@ -15,29 +15,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/starlogik/shh"
+    "url": "https://github.com/starlogik/secrets-manager"
   },
   "bugs": {
-    "url": "https://github.com/starlogik/shh/issues"
+    "url": "https://github.com/starlogik/secrets-manager/issues"
   },
-  "homepage": "https://github.com/starlogik/shh",
+  "homepage": "https://github.com/starlogik/secrets-manager",
   "dependencies": {
-    "@babel/runtime": "^7.16.7",
-    "aws-sdk": "^2.1058.0",
-    "graceful-fs": "^4.2.9",
+    "@aws-sdk/client-secrets-manager": "^3.433.0",
+    "@babel/runtime": "^7.23.2",
+    "graceful-fs": "^4.2.11",
     "writeln": "^2.0.5"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.7",
-    "@babel/plugin-transform-runtime": "^7.16.8",
-    "@babel/preset-env": "^7.16.8",
-    "@babel/preset-typescript": "^7.16.7",
-    "@types/graceful-fs": "^4.1.5",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.9",
-    "babel-jest": "^27.4.6",
-    "jest": "^27.4.7",
-    "typescript": "^4.5.4"
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
+    "@types/graceful-fs": "^4.1.8",
+    "@types/jest": "^29.5.6",
+    "@types/node": "^20.8.8",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.2.2"
   }
 }

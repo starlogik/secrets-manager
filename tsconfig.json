@@ -11,8 +11,7 @@
     "outDir": "./lib",
     "skipLibCheck": true,
     "sourceMap": false,
-    "target": "esnext",
-    "watch": false
+    "target": "esnext"
   },
   "exclude": ["node_modules", "test", "lib"]
 }

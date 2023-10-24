@@ -1,4 +1,4 @@
-import { SecretsManager } from 'aws-sdk';
+import { SecretsManager } from '@aws-sdk/client-secrets-manager';
 import { Logger } from 'writeln';
 import fs from 'graceful-fs';
 // import deasync from 'deasync';
@@ -61,7 +61,7 @@ async function walkAndDecrypt(section: ISection, pattern: RegExp) {
 
 export async function decryptSecret(SecretId: string) {
 	try {
-		const { SecretString, SecretBinary } = await secretsManager.getSecretValue({ SecretId }).promise();
+		const { SecretString, SecretBinary } = await secretsManager.getSecretValue({ SecretId });
 
 		if (SecretString) {
 			if (jsonRegex.test(SecretString)) {
